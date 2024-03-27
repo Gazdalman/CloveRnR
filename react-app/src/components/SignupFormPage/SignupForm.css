@@ -1,0 +1,9 @@
+#signup-page-title {
+  margin-top: 70px;
+}
+
+#signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

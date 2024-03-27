@@ -1,0 +1,53 @@
+#confirm-delete:hover {
+  background-color: #620a10;
+}
+
+#cancel-delete {
+  border-radius: 10px;
+}
+
+#delete-text {
+  text-align: center;
+}
+
+#delete-modal {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+}
+
+#confirm-delete {
+  background-color: #951019;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+#modal-content #cancel-delete:hover {
+  background-color: rgb(152, 152, 152);
+}
+
+#modal-content .delete-form {
+  width: 400px
+}
+
+#choose-file,
+#remove-file {
+  background-color: #951019;
+  color: white;
+  border-radius: 5px;
+  width: 105px;
+  margin-bottom: 5px;
+}
+
+#photo-field-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#choose-file:hover,
+#remove-file:hover {
+  background-color: #620a10;
+}

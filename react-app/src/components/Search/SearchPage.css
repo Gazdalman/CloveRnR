@@ -1,0 +1,95 @@
+#search-page {
+  min-height: 662px;
+}
+
+#search-page-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#search-page-cards {
+  min-height: 460px;
+}
+
+#search-page-input {
+  width: 25vw;
+  height: 25px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: 1px solid darkgrey;
+  border-right: none;
+  padding-left: 5px;
+}
+
+#pagination>button {
+  width: 85px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #951019;
+  color: white;
+}
+
+#pagination>button:hover {
+  background-color: #620a10;
+}
+
+#pagination>button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(219, 217, 217);
+}
+
+#no-found-projects {
+  text-align: center;
+}
+
+
+#pagination {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  margin-bottom: 20px;
+  /* justify-content: center; */
+}
+
+#pagination.one-button {
+  justify-content: flex-end;
+}
+
+#pagination.two-buttons {
+  justify-content: space-between;
+}
+
+#search-page-input:focus {
+  border: 1px solid black;
+  border-right: none;
+}
+
+#search-page-bar:focus-within > button {
+  border: 1px solid black;
+  border-left: none
+}
+
+#search-page-bar:focus-within > input {
+  border: 1px solid black;
+  border-right: none;
+}
+
+#search-page-button {
+  padding: 0px 10px;
+  height: 29px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid darkgrey;
+  border-left: none;
+  background-color: white;
+}
+
+#search-page-button:hover {
+  background-color: rgba(255, 255, 255, 0.883);
+  /* color: white; */
+  height: 29px;
+
+}

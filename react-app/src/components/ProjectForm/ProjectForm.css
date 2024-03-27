@@ -1,0 +1,405 @@
+#project-form-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  min-height: 625px;
+}
+
+#add-item-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#physical-items {
+  width: 350px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+#sr-div>p {
+  text-align: center;
+  font-weight: bold;
+}
+
+#quant-div {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quant-div>p {
+  font-weight: bold;
+}
+
+#quantity-input-field {
+  display: flex;
+  width: 350px;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+
+#pi-div>p {
+  text-align: center;
+  font-weight: bold;
+}
+
+#shipping-radio {
+  display: flex;
+  flex-direction: column;
+}
+
+#reward-description-field {
+  margin-bottom: 20px;
+}
+
+#reward-item-input-div {
+  margin-top: 70px
+}
+
+#hide-item-form,
+#save-item {
+  width: 80px;
+  margin-bottom: 10px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#hide-item-form:hover,
+#save-item:hover {
+  background-color: #620a10;
+}
+
+#show-item-form {
+  margin-top: 20px;
+  width: 95px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#reward-preview-div {
+  width: 400px;
+  border: 1px solid black;
+}
+
+#reward-preview {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin: auto;
+}
+
+#preview-description {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+#edit-item-form {
+  width: 96px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#show-item-form:hover,
+#edit-item-form:hover {
+  background-color: #620a10;
+}
+
+#save-item:disabled {
+  background-color: rgb(219, 217, 217);
+}
+
+#item-title-field,
+#item-quantity-field {
+  margin-bottom: 30px;
+}
+
+#item-dnd-box {
+  margin-bottom: 20px;
+}
+
+#project-title-info,
+#project-subtitle-info {
+  width: 50%;
+}
+
+#project-title-description,
+#project-subtitle-description {
+  width: 90%;
+}
+
+#project-title-description>p,
+#project-subtitle-description>p,
+#project-goal-description>p {
+  width: 30vw;
+}
+
+#pp-rcd-desc
+
+#reward-form {
+  margin-top: 100px;
+}
+
+#reward-item-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#item-dnd-box {
+  width: 500px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-radius: 10px;
+  background-color: rgb(213, 213, 213);
+  margin: 0, 15px;
+}
+
+#reward-form-header {
+  text-align: center;
+}
+
+#length-counter {
+  margin-left: 5px;
+}
+
+#reward-title-div {
+  display: flex;
+  align-items: center;
+}
+
+#reward-form,
+#reward-pp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main-cat-info>h2,
+#second-cat-info>h2,
+#location-info>h2 {
+  text-align: center;
+}
+
+#main-category-description,
+#second-category-description,
+#location-description {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+#project-title-area,
+#project-subtitle-area,
+#project-goal-area {
+  border-bottom: 1px lightgrey solid;
+  padding-bottom: 20px;
+}
+
+#story-form-container {
+  margin-top: 100px;
+}
+
+#story-modal-container,
+#story-edit-form-container {
+  text-align: center;
+  width: 450px;
+}
+
+/* #location-description {
+  width: 50%;
+} */
+
+#project-dnd-box {
+  width: 575px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-radius: 10px;
+  background-color: rgb(213, 213, 213);
+}
+
+#main-cat-input,
+#second-cat-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main-cat-label,
+#main-subcat-label,
+#second-cat-label,
+#second-subcat-label {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+#main-subcat-input,
+#second-subcat-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main-cat-fields,
+#second-cat-fields {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 15px;
+}
+
+#back-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.form-nav {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+}
+
+#location-input {
+  display: flex;
+  justify-content: center;
+}
+
+.project-next-button {
+  width: 125px;
+  height: 35px;
+}
+
+#project-back-button {
+  border: none;
+  background-color: white;
+  margin-right: 30px;
+}
+
+#project-back-button:hover {
+  color: #951019;
+}
+
+#create-project-btn,
+#back-basics-button {
+  width: 125px;
+  height: 35px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#ai-input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#ai-input-field > p {
+  font-weight: bold;
+}
+
+#story-form-title {
+  text-align: center;
+}
+
+#skip-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#save-story-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#save-story-btn > *,
+.skip-step-button {
+  background-color: #951019;
+  color: white;
+  width: 82px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#save-story-btn > *:hover,
+.skip-step-button:hover {
+  background-color: #620a10;
+}
+
+#save-story-btn > *:disabled {
+  background-color: rgb(219, 217, 217);;
+}
+
+#ai-options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#create-project-btn:hover,
+#back-basics-button:hover {
+  background-color: #620a10;
+}
+
+#cpb-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#location-input {
+  margin-bottom: 10px;
+}
+
+.project-next-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+.project-next-button:hover {
+  background-color: #620a10;
+}
+
+#to-project-details {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+  width: 125px;
+  height: 35px;
+}
+
+#to-project-details:hover {
+  background-color: #620a10;
+}
+
+#project-image-field,
+#video-field {
+  padding-bottom: 20px;
+  border-bottom: 1px lightgrey solid;
+}
+
+#proj-info-form {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  #project-dnd-box {
+    width: 350px;
+    height: 420px;
+  }
+}

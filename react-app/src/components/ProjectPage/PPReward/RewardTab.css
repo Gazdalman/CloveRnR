@@ -1,0 +1,272 @@
+#pp-rcd-image {
+  width: 20rem;
+  height: auto;
+}
+
+#reward-description-field {
+  margin-top: 30px;
+}
+
+#delete-reward-button,
+#edit-reward-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#delete-reward-button:hover,
+#edit-reward-button:hover {
+  background-color: #620a10;
+}
+
+#reward-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+#pp-rcd-pledge-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 5px;
+  height: 25px;
+}
+
+#pp-rcd-pledge-button:hover {
+  background-color: #620a10;
+}
+
+#pp-rcd-pledge-button:disabled {
+  background-color: rgb(219, 217, 217);
+  height: 40px
+}
+
+.no-user-login-pledge {
+  background-color: #951019;
+  color: white;
+  border-radius: 5px;
+  height: 25px;
+  width: 120px;
+}
+
+#ms-header,
+#md-header,
+#mq-header {
+  font-weight: bold;
+}
+
+#pp-rcd-amount {
+  text-align: center;
+}
+
+#pp-rcd-title {
+  text-align: center;
+}
+
+#pp-reward-card-image {
+  display: flex;
+  justify-content: center;
+}
+
+#pp-rcd-mid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#pp-rcd-mid > * {
+  text-align: center;
+}
+
+.pp-item-form {
+  width: 100%;
+}
+
+#pp-prod-item-card {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-page-projects > button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.profile-page-projects > button:hover {
+  background-color: #620a10;
+}
+
+#pp-item-image {
+  width: 75px;
+  height: 75px;
+  margin-right: 10px;
+}
+
+#item-button-div {
+  display: flex;
+  width: 250px;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+#item-button-div > * {
+  width: 85px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#item-button-div > *:hover {
+  background-color: #620a10;
+}
+
+#ppr-preview-image {
+  width: 350px;
+  height: 200px;
+}
+
+#create-reward {
+  margin-top: 15px;
+  width: 90px;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#cancel-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+#cancel-div > button {
+  background-color: #951019;
+  width: 90px;
+  color: white;
+  border-radius: 10px;
+}
+
+#cancel-div > button:hover {
+  background-color: #620a10;
+}
+
+#create-reward:hover {
+  background-color: #620a10;
+}
+
+#create-reward:disabled {
+  background-color: rgb(219, 217, 217);
+}
+
+#preview-image > img {
+  width: 350px;
+  height: 200px;
+}
+
+#no-image-there {
+  width: fit-content;
+}
+
+/* #photo-field-buttons {
+  width: fit-content;
+} */
+
+.drag-drop-box {
+  width: fit-content;
+  height:50px;
+  margin-top: 20px;
+}
+
+#reward-buttons > *:not(#no-user-login-pledge) {
+  width: 105px;
+}
+
+#edit-reward-button {
+  margin-left: 10px;
+}
+
+.pp-item-form {
+  background-color: #951019;
+  color: white;
+  border-radius: 5px;
+}
+
+.pp-item-form:hover {
+  background-color: #620a10;
+}
+
+#add-item-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.thumbnails-noname {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  background-color: rgb(213, 213, 213);
+}
+
+
+
+.reward-title-field {
+  margin-bottom: 15px;
+}
+
+#pp-rcd-desc {
+  text-align: center;
+  font-weight: bold;
+}
+
+#reward-modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#rewards-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;
+}
+
+#buttons-link {
+  text-align: center;
+}
+
+.edit-story-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#pp-rcd-item {
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  border: black solid 1px;
+  border-radius: 10px;
+  align-content: center;
+  align-items: center;
+}
+
+#reward-dnd-box {
+  width: 575px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-radius: 10px;
+  background-color: rgb(213, 213, 213);
+}
+
+#reward-form-div {
+  margin-top: 70px;
+}
+
+#reward-preview-div {
+  margin-top: 20px;
+}

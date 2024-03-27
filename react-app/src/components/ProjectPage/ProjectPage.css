@@ -1,0 +1,298 @@
+#pp-video {
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+}
+
+#pledge-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 375px;
+  height: 170px;
+}
+
+.edit-story-button {
+  margin-top: 20px;
+}
+
+.edit-story-button:hover {
+  background-color: #620a10;
+}
+
+#actual-pledge-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 375px;
+}
+
+#actual-pledge-form>button {
+  background-color: #951019;
+  width: 85px;
+  color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#pp-add-story-btn,
+#add-reward-button {
+  width: 150px;
+  height: 30px;
+}
+
+.pp-add-story-btn {
+  background-color: #951019;
+  border-radius: 10px;
+  color: white;
+}
+
+.pp-add-story-btn:hover {
+  background-color: #620a10;
+}
+
+#pp-item-form {
+  width: 25%;
+  height: 20px;
+}
+
+#pp-reward-card {
+  margin-bottom: 15px;
+  border-bottom: 1px grey solid;
+  padding-bottom: 15px;
+}
+
+#reward-modal-form {
+  width: 80%;
+  margin: auto;
+}
+
+#project-page-container {
+  width: 85%;
+  margin: auto;
+  margin-top: 75px;
+}
+
+#pp-header {
+  text-align: center;
+}
+
+#pp-image-container {
+  text-align: center;
+}
+
+#ppp-heart {
+  font-size: 30px;
+}
+
+#like-pledge-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#ppp-heart:hover {
+  animation: pulse 1s infinite;
+  cursor: pointer;
+  color: #951019;
+  text-shadow: #951019 0px 0px 10px;
+}
+
+#pp-image-container>img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* border-radius: 10px; */
+}
+
+#pp-add-story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pp-story-tab>h2,
+#pp-rewards-tab>h2 {
+  width: fit-content;
+  margin: auto;
+}
+
+#pp-story-tab {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  min-height: 200px;
+}
+
+#story-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+#pp-tabs {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#pp-pledge-button {
+  height: 40px;
+  width: 90%;
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#pp-pledge-button:hover {
+  background-color: #620a10;
+}
+
+#pp-image {
+  width: 100%;
+  max-width: 850px;
+  max-height: 400px;
+  /* max-width: 100%; */
+}
+
+#pp-details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-project-buttons {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+}
+
+#user-project-buttons>button {
+  width: 48%;
+  height: 40px;
+}
+
+.owner-delete-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+.owner-delete-button:hover {
+  background-color: #620a10;
+}
+
+#owner-edit-btn {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+}
+
+#add-reward-button {
+  background-color: #951019;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#add-reward-button:hover {
+  background-color: #620a10;
+}
+
+#owner-edit-btn:hover {
+  background-color: #620a10;
+}
+
+#pp-details-main {
+  margin: auto;
+}
+
+#pp-progress-bar {
+  width: 80%;
+  margin: auto;
+}
+
+#pp-details-main {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+#pp-earned {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pp-category {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: center;
+}
+
+#pp-date {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: center;
+}
+
+#pp-date-upper,
+#pp-earned-upper,
+#pp-category-upper {
+  font-size: 25px;
+  color: #951019;
+}
+
+#pp-earned-lower,
+#pp-category-lower,
+#pp-date-lower {
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  #story-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #story-text {
+    text-align: center;
+  }
+
+  #pp-details-main {
+    width: 100%;
+  }
+
+  #pp-category-upper,
+  #pp-earned-upper,
+  #pp-date-upper {
+    font-size: 18px;
+  }
+}

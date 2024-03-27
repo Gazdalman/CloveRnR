@@ -1,0 +1,240 @@
+#ppp-title {
+  width: fit-content;
+  text-align: center;
+}
+
+#ppp-div {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 700px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#pp-like-heart:hover {
+  color: #951019;
+  animation: pulse 1s infinite;
+  cursor: pointer;
+  text-shadow: #951019 0px 0px 10px;
+}
+
+#edit-pledge-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 375px;
+  height: 250px;
+}
+
+#pledge-edit-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#pledge-edit-btns>button {
+  background-color: #951019;
+  width: 85px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#user-profile-container {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 682px;
+}
+
+#user-profile-container>p {
+  text-align: center;
+}
+
+.profile-page-projects {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#ppp-buttons {
+  width: 65%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#ppp-buttons>button {
+  background-color: #951019;
+  width: 90px;
+  color: white;
+  border-radius: 10px;
+}
+
+#ppp-buttons>button:hover {
+  background-color: #620a10;
+}
+
+#earned-rewards-container {
+  padding-bottom: 20px;
+  /* display: flex;
+  flex-direction: column-reverse; */
+}
+
+#story-tab {
+  margin-bottom: 20px;
+}
+
+#ppp-tabs {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.earned-rewards-btn {
+  display: none;
+  background-color: #951019;
+  width: 120px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.earned-rewards-btn:hover {
+  background-color: #620a10;
+}
+
+.ppp-reward-proj-container {
+  display: flex;
+  width: 50vw;
+  height: 165px;
+  border: solid 1px black;
+  border-radius: 10px;
+  justify-content: space-between;
+  min-width: 660px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.tab-title {
+  text-align: center;
+}
+
+.ppp-reward-proj-image {
+  display: flex;
+  justify-content: center;
+  background-color: #c8c6c6;
+  border-radius: 10px;
+}
+
+.ppp-reward-proj-image>img {
+  width: 350px;
+  height: 165px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.ppp-reward-proj-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.ppp-reward-proj-details>p {
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+#ppp-rp-title {
+  margin-top: 5px;
+}
+
+.ppp-reward-proj-container:hover {
+  height: 225px;
+  width: 51vw;
+  box-shadow: 0 0 20px #951019;
+  transition: all .06s ease;
+}
+
+.ppp-reward-proj-container:hover .earned-rewards-btn {
+  display: block;
+  transition: all .06s ease;
+}
+
+.ppp-reward-proj-container:hover #reward-proj-img {
+  height: 227px;
+  width: 483px;
+  transition: all .06s ease;
+}
+
+.ppp-reward-proj-container:hover>.ppp-reward-proj-details {
+  justify-content: center;
+}
+
+#reward-proj-img:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  #earned-rewards-container {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 20px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  #story-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #story-text {
+    text-align: center;
+  }
+
+  .ppp-reward-proj-container {
+    display: block;
+    height: 350px;
+    width: 350px;
+    min-width: 0px;
+  }
+
+  .ppp-reward-proj-container:hover {
+    height: 420px;
+    width: 380px;
+    box-shadow: 0 0 20px #951019;
+    transition: all .06s ease;
+  }
+
+  .ppp-reward-proj-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .earned-rewards-btn {
+    margin-bottom: 10px;
+  }
+}
