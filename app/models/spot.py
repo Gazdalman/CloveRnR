@@ -29,6 +29,11 @@ class Spot(db.Model):
     back_populates='spot'
   )
 
+  reviews = db.relationship(
+    'Review',
+    back_populates='spot'
+  )
+
   def to_dict(self):
     return {
       'id': self.id,
