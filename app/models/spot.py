@@ -36,6 +36,19 @@ class Spot(db.Model):
     cascade='all, delete-orphan'
   )
 
+  bookings = db.relationship(
+    'Booking',
+    back_populates='spot',
+    cascade='all, delete-orphan'
+  )
+
+  def get_stars(self):
+    if not self.reviews:
+      return 0
+
+    return sum([review.stars for review in self.reviews]) / len(self.reviews)
+
+
   def to_dict(self):
     return {
       'id': self.id,
@@ -49,5 +62,7 @@ class Spot(db.Model):
       'description': self.description,
       'price': self.price,
       'createdAt': self.created_at,
-      'images': [image.to_dict() for image in self.images]
+      'images': [image.to_dict() for image in self.images],
+      'avgRating': self.get_stars(),
+      'numReviews': len(self.reviews)
     }

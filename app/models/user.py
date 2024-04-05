@@ -26,6 +26,12 @@ class User(db.Model, UserMixin):
     cascade='all, delete-orphan'
   )
 
+  bookings = db.relationship(
+    'Booking',
+    back_populates='user',
+    cascade='all, delete-orphan'
+  )
+
   @property
   def password(self):
     return self.hashed_password
