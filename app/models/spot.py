@@ -26,12 +26,14 @@ class Spot(db.Model):
 
   images = db.relationship(
     'SpotImage',
-    back_populates='spot'
+    back_populates='spot',
+    cascade='all, delete-orphan'
   )
 
   reviews = db.relationship(
     'Review',
-    back_populates='spot'
+    back_populates='spot',
+    cascade='all, delete-orphan'
   )
 
   def to_dict(self):

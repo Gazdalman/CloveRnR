@@ -22,6 +22,12 @@ class Review(db.Model):
     back_populates='reviews'
   )
 
+  images = db.relationship(
+    'ReviewImage',
+    back_populates='review',
+    cascade='all, delete-orphan'
+  )
+
   def to_dict(self):
     return {
       'id': self.id,
