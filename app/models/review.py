@@ -11,7 +11,7 @@ class Review(db.Model):
   booking_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('bookings.id')), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')), nullable=False)
-  review_text = db.Column(db.String(300), nullable=False)
+  text = db.Column(db.String(300))
   stars = db.Column(db.Integer, nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now())
   updated_at = db.Column(db.DateTime, default=datetime.now())
@@ -42,7 +42,7 @@ class Review(db.Model):
       'id': self.id,
       'userId': self.user_id,
       'spotId': self.spot_id,
-      'reviewText': self.review_text,
+      'reviewText': self.text,
       'stars': self.stars,
       'createdAt': self.created_at,
       'updatedAt': self.updated_at
@@ -54,7 +54,7 @@ class Review(db.Model):
       'bookingId': self.booking_id,
       'userId': self.user_id,
       'spotId': self.spot_id,
-      'reviewText': self.review_text,
+      'reviewText': self.text,
       'stars': self.stars,
       'createdAt': self.created_at,
       'updatedAt': self.updated_at
