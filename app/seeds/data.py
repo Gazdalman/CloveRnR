@@ -15,11 +15,26 @@ universes = {
             'lat': round(uniform(-90, 90), 2),
             'lng': round(uniform(-180, 180), 2),
             'description': 'Wanna stay where ALL of the greatest inventions are made? Want to meet the prettiest, most amazing, smartest, and magnificent inventor to ever live? Well come stay at The Capsule Corporation HQ located in the center of West City!',
+            'price': round(uniform(200, 500), 2)
+        },
+        'Goku\'s House': {
+            'location': 'East District',
+            'lat': round(uniform(-90, 90), 2),
+            'lng': round(uniform(-180, 180), 2),
+            'description': 'Come stay at the birthplace of the Great Saiyaman and the home of the daughter of the Ox King! We need the money since my husband knows nothing but how to fight...',
             'price': round(uniform(1, 50), 2)
         },
-        'Goku\'s House': {}
+        'King Kai\'s House': {
+            'location': 'King Kai\'s Planet',
+            'lat': round(uniform(-90, 90), 2),
+            'lng': round(uniform(-180, 180), 2),
+            'description': 'Good news! You\'ve got a lovely opportunity to stay at a place overlooking the marvel Snake Way! Bad news is you\'re probably dead...',
+            'price': round(uniform(1, 50), 2)
+        }
     },
-    'Naruto': {},
+    'Naruto': {
+      
+    },
     'Black Clover': {},
     'Bleach': {},
     'Fullmetal Alchemist': {},
