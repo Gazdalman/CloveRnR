@@ -33,7 +33,7 @@ universes = {
         }
     },
     'Naruto': {
-      
+      'Hokage\'s Palace': {}
     },
     'Black Clover': {},
     'Bleach': {},
