@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from aws_helper import remove_file_from_s3
+from .aws_helper import remove_file_from_s3
 from sqlalchemy import event
 
 class ReviewImage(db.Model):
