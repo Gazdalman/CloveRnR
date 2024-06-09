@@ -12,6 +12,7 @@ class Booking(db.Model):
   spot_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spots.id')), nullable=False)
   start = db.Column(db.DateTime, nullable=False)
   end = db.Column(db.DateTime, nullable=False)
+  notes = db.Column(db.String(300))
   created_at = db.Column(db.DateTime, default=datetime.now())
   updated_at = db.Column(db.DateTime, default=datetime.now())
 
