@@ -1,5 +1,5 @@
 from .user import User
-from .db import environment, SCHEMA
+from .db import db, environment, SCHEMA
 from .spot import Spot
 from .spot_image import SpotImage
 from .review import Review
