@@ -11,7 +11,8 @@ class Spot(db.Model):
   owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   name = db.Column(db.String(50), nullable=False)
   address = db.Column(db.String(150), nullable=False)
-  location = db.Column(db.String(150))
+  city = db.Column(db.String(150), nullable=False)
+  state = db.Column(db.String(150), nullable=False)
   # universe = db.Column(db.String(150), nullable=False)
   lat = db.Column(db.FLOAT, nullable=False)
   lng = db.Column(db.FLOAT, nullable=False)
@@ -54,9 +55,8 @@ class Spot(db.Model):
       'id': self.id,
       'ownerId': self.owner_id,
       'name': self.name,
-      # 'address': self.address,
-      'location': self.location,
-      'universe': self.universe,
+      'address': self.address,
+      'location': f'{self.city}, {self.state}',
       'lat': self.lat,
       'lng': self.lng,
       'description': self.description,
