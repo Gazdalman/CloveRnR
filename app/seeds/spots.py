@@ -3,8 +3,6 @@ from sqlalchemy.sql import text
 from faker import Faker
 from random import choice, randint, uniform
 
-# Adds a demo user, you can add other users here if you want
-
 adjectives = [
     "adorable", "adventurous", "agreeable", "alert", "ambitious",
     "amused", "arrogant", "awkward", "bad", "beautiful",
@@ -50,6 +48,9 @@ nouns = [
 ]
 
 def choose_name(word_type):
+  """
+  Makes a name for the spot using a noun, adjective, or both as well as an extension.
+  """
   ext = [' Heights', ' Estate', ' Manor', ' Place', ' House', ' Spot', 'Lodge']
 
   if word_type == 'noun':
