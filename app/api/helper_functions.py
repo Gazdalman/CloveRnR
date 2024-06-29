@@ -1,9 +1,9 @@
 from flask_login import current_user
-from models import Spot
+from app.models import Spot
 from datetime import datetime
 
-def user_owns(record):
-  if int(record.user_id) != int(current_user.get_id()):
+def user_owns_spot(record):
+  if int(record.owner_id) != int(current_user.get_id()):
     return False
   return True
 

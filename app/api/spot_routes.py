@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from .helper_functions import user_owns, check_bookings
+from .helper_functions import user_owns_spot, check_bookings
 from app.models import Review, Spot, Booking, SpotImage, db
 from app.forms import ReviewForm, BookingForm, CreateSpotForm, SpotImageForm
-from app.api.aws_helper import upload_file_to_s3, remove_file_from_s3, get_unique_filename
+from app.api.aws_helper import upload_file_to_s3, get_unique_filename
 
-spot_routes = Blueprint('reviews', __name__)
+spot_routes = Blueprint('spots', __name__)
 
 def validation_errors_to_error_messages(validation_errors):
   """
@@ -30,6 +30,14 @@ def get_spot(id):
     return spot.to_dict()
   else:
     return {'errors': 'Spot not found'}, 404
+
+@spot_routes.route('/user')
+@login_required
+def get_user_spots():
+  spots = Spot.query.filter(Spot.owner_id == current_user.get_id())
+
+  if spots:
+    return {spot.id: spot.to_dict() for spot in spots}
 
 @spot_routes.route('/create', methods=['POST'])
 @login_required
@@ -70,14 +78,15 @@ def add_image(id):
   if not spot:
     return 'Spot not found', 404
 
-  if not user_owns:
+  if not user_owns_spot(spot):
     return 'Unauthorized', 403
 
   images = SpotImage.query.filter(SpotImage.spot_id==id)
 
   form = SpotImageForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
 
-  if len(images) == 5:
+  if images == 5:
     return {'errors': 'Spot already has five images'}, 400
 
   if form.validate_on_submit():
@@ -90,15 +99,15 @@ def add_image(id):
     if 'url' not in img_upload:
       errs = [img_upload]
 
-    if data.preview:
-      for image in images():
+    if data['preview']:
+      for image in images:
         image.preview = False
       db.session.commit()
 
     image = SpotImage(
       spot_id=id,
       url=img_upload['url'],
-      preview=data.preview
+      preview=data['preview']
     )
 
     db.session.add(image)
