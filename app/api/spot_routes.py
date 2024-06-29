@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from .helper_functions import user_owns, check_bookings
 from app.models import Review, Spot, Booking, SpotImage, db
-from app.forms import ReviewForm, BookingForm, CreateSpotForm
+from app.forms import ReviewForm, BookingForm, CreateSpotForm, SpotImageForm
+from app.api.aws_helper import upload_file_to_s3, remove_file_from_s3, get_unique_filename
 
 spot_routes = Blueprint('reviews', __name__)
 
@@ -32,6 +34,7 @@ def get_spot(id):
 @spot_routes.route('/create', methods=['POST'])
 @login_required
 def create_spot():
+  """User can create a spot"""
   form = CreateSpotForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -60,7 +63,49 @@ def create_spot():
 @spot_routes.route('/<int:id>/add_image', methods=['POST'])
 @login_required
 def add_image(id):
-  pass
+  """User can add images to a spot"""
+
+  spot = Spot.query.get(id)
+
+  if not spot:
+    return 'Spot not found', 404
+
+  if not user_owns:
+    return 'Unauthorized', 403
+
+  images = SpotImage.query.filter(SpotImage.spot_id==id)
+
+  form = SpotImageForm()
+
+  if len(images) == 5:
+    return {'errors': 'Spot already has five images'}, 400
+
+  if form.validate_on_submit():
+    data = form.data
+
+    spot_img = data['image']
+
+    spot_img.filename = get_unique_filename(spot_img.filename)
+    img_upload = upload_file_to_s3(spot_img)
+    if 'url' not in img_upload:
+      errs = [img_upload]
+
+    if data.preview:
+      for image in images():
+        image.preview = False
+      db.session.commit()
+
+    image = SpotImage(
+      spot_id=id,
+      url=img_upload['url'],
+      preview=data.preview
+    )
+
+    db.session.add(image)
+    db.session.commit()
+
+    return 'ok'
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @spot_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
