@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .helper_functions import user_owns_spot, check_bookings
 from app.models import Review, Spot, Booking, SpotImage, db
-from app.forms import ReviewForm, BookingForm, CreateSpotForm, SpotImageForm
+from app.forms import ReviewForm, BookingForm, CreateSpotForm, SpotImageForm, EditSpotForm
 from app.api.aws_helper import upload_file_to_s3, get_unique_filename
 
 spot_routes = Blueprint('spots', __name__)
@@ -121,4 +121,9 @@ def add_image(id):
 @spot_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_spot(id):
-  pass
+  spot = Spot.query.get(id)
+
+  if not spot:
+    return 'Spot not found', 404
+
+  
