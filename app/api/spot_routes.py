@@ -81,13 +81,15 @@ def add_image(id):
   if not user_owns_spot(spot):
     return 'Unauthorized', 403
 
-  images = SpotImage.query.filter(SpotImage.spot_id==id)
+  images = SpotImage.query.filter(SpotImage.spot_id==id).all()
+  count = SpotImage.query.filter(SpotImage.spot_id==id).count()
 
   form = SpotImageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
-  if images == 5:
+  if count == 5:
     return {'errors': 'Spot already has five images'}, 400
+
 
   if form.validate_on_submit():
     data = form.data
