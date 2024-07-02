@@ -4,6 +4,7 @@ from sqlalchemy.sql import text
 def seed_spot_images():
   for id in range(1,36):
     for _ in range(5):
+      
       img = SpotImage(
         spot_id=id,
         url="https://picsum.photos/850/400",

@@ -26,14 +26,15 @@ class SpotImage(db.Model):
     }
 
 def check_preview(mapper, connection, target):
-    if target.preview:
-      images = SpotImage.query.all()
-      for image in images:
-        image.preview = False
+  if target.preview:
+    images = SpotImage.query.all()
+    for image in images:
+      image.preview = False
 
 def on_delete(mapper, connection, target):
+  if 's3' in target.url:
     remove_file_from_s3(target.url)
-    return 'done'
+  return 'done'
 
 event.listen(SpotImage, 'before_insert', check_preview)
 

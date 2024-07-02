@@ -126,4 +126,41 @@ def edit_spot(id):
   if not spot:
     return 'Spot not found', 404
 
-  
+  if not user_owns_spot(spot):
+    return 'You are not authorized', 403
+
+  form = EditSpotForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    data = form.data
+
+    spot.name = data['name']
+    spot.address = data['address']
+    spot.city = data['city']
+    spot.state = data['state']
+    spot.lat = data['lat']
+    spot.lng = data['lng']
+    spot.description = data['description']
+    spot.price = data['price']
+
+    db.session.commit()
+
+    return spot.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@spot_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_spots(id):
+  spot = Spot.query.get(id)
+
+  if not spot:
+    return 'Spot not found', 404
+
+  if not user_owns_spot(spot):
+    return 'You are not authorized', 403
+
+  db.session.delete(spot)
+  db.session.commit()
+
+  return 'Success'

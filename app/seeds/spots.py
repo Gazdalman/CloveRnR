@@ -69,7 +69,7 @@ def seed_spots():
     spot = Spot(
       owner_id=randint(1,100),
       name=choose_name(word),
-      address=fake.address(),
+      address=f'{randint(1,9999)} {fake.street_name()} {fake.street_suffix()}',
       city=fake.city(),
       state=fake.state_abbr(),
       lat=round(uniform(-90,90),2),
