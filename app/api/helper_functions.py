@@ -29,3 +29,4 @@ def check_bookings(start,end,id):
       return 'Booking dates conflict with an existing booking'
     if start <= date1 and end >= date2:
       return 'Booking dates conflict with an existing booking'
+  return 'ok'

@@ -151,7 +151,7 @@ def edit_spot(id):
 
 @spot_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
-def delete_spots(id):
+def delete_spot(id):
   spot = Spot.query.get(id)
 
   if not spot:
@@ -164,3 +164,39 @@ def delete_spots(id):
   db.session.commit()
 
   return 'Success'
+
+@spot_routes.route('/<int:id>/add_booking', methods=['POST'])
+@login_required
+def add_booking(id):
+  spot = Spot.query.get(id)
+
+  if not spot:
+    return 'Spot not found', 404
+
+  if user_owns_spot(spot):
+    return 'You cannot book your own spot', 403
+
+  form = BookingForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    data = form.data
+
+    good_dates = check_bookings(data['start'], data['end'],id)
+
+    if good_dates  != 'ok':
+      return good_dates
+
+    booking = Booking(
+      user_id=current_user.get_id(),
+      spot_id=id,
+      start=data['start'],
+      end=data['end']
+    )
+
+    db.session.add(booking)
+    db.session.commit()
+
+    return booking.to_dict()
+
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400

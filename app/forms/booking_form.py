@@ -3,6 +3,6 @@ from wtforms.validators import DataRequired, Length, NumberRange
 from wtforms import DateTimeField, TextAreaField
 
 class BookingForm(FlaskForm):
-  start = DateTimeField('start', validators=[DataRequired()])
-  end = DateTimeField('end', validators=[DataRequired()])
+  start = DateTimeField('start', format='%m-%d-%Y', validators=[DataRequired()])
+  end = DateTimeField('end', format='%m-%d-%Y', validators=[DataRequired()])
   notes = TextAreaField('notes', validators=[Length(max=255)])
