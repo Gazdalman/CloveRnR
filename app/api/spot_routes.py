@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .helper_functions import user_owns_spot, check_bookings
 from app.models import Review, Spot, Booking, SpotImage, db
-from app.forms import ReviewForm, BookingForm, CreateSpotForm, SpotImageForm, EditSpotForm
+from app.forms import BookingForm, CreateSpotForm, SpotImageForm, EditSpotForm
 from app.api.aws_helper import upload_file_to_s3, get_unique_filename
 
 spot_routes = Blueprint('spots', __name__)
@@ -191,7 +191,8 @@ def add_booking(id):
       user_id=current_user.get_id(),
       spot_id=id,
       start=data['start'],
-      end=data['end']
+      end=data['end'],
+      notes=data['notes']
     )
 
     db.session.add(booking)
