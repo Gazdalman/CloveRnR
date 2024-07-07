@@ -51,14 +51,14 @@ def create_spot():
 
     spot = Spot(
       owner_id=current_user.get_id(),
-      name=data.name,
-      address=data.address,
-      city=data.city,
-      state=data.state,
-      lat=data.lat,
-      lng=data.lng,
-      description=data.description,
-      price=data.price
+      name=data['name'],
+      address=data['address'],
+      city=data['city'],
+      state=data['state'],
+      lat=data['lat'],
+      lng=data['lng'],
+      description=data['description'],
+      price=data['price']
     )
 
     db.session.add(spot)

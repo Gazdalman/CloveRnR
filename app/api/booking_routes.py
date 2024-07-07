@@ -17,6 +17,16 @@ def validation_errors_to_error_messages(validation_errors):
       errorMessages.append(f'{field} : {error}')
   return errorMessages
 
+@booking_routes.route('/user')
+@login_required
+def get_user_bookings():
+  bookings = Booking.query.filter(Booking.user_id == current_user.get_id()).all()
+
+  if not bookings:
+    return 'No bookings found', 404
+
+  return {booking.id: booking.to_dict() for booking in bookings}
+
 @booking_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_booking(id):
@@ -28,7 +38,7 @@ def edit_booking(id):
   if not booking:
     return 'No such booking found', 404
 
-  if booking.user_id != current_user.get_id():
+  if int(booking.user_id) != int(current_user.get_id()):
     return 'You are not authorized', 403
 
   if form.validate_on_submit():
@@ -54,6 +64,7 @@ def create_review(id):
   booking = Booking.query.get(id)
 
   form = ReviewForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
 
   if not booking:
     return 'No booking found', 404
@@ -63,3 +74,19 @@ def create_review(id):
 
   if booking.start > datetime.now():
     return 'Can\'t review a future stay', 403
+
+  if form.validate_on_submit():
+    data = form.data
+
+    review = Review(
+      user_id=current_user.get_id(),
+      spot_id=booking.spot_id,
+      text=data['text'],
+      stars=data['stars']
+    )
+
+    db.session.add(review)
+    db.session.commit()
+    return review.to_dict()
+
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400

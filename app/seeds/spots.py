@@ -51,7 +51,7 @@ def choose_name(word_type):
   """
   Makes a name for the spot using a noun, adjective, or both as well as an extension.
   """
-  ext = [' Heights', ' Estate', ' Manor', ' Place', ' House', ' Spot', 'Lodge']
+  ext = ['Heights', 'Estate', 'Manor', 'Place', 'House', 'Spot', 'Lodge']
 
   if word_type == 'noun':
     return f'The {choice(nouns).capitalize()} {choice(ext)}'
