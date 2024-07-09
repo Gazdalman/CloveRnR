@@ -34,7 +34,11 @@ class Booking(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
-      'user': self.user_id,
+      'user': {
+        'username': self.user.username,
+        'first': self.user.first_name,
+        'last': self.user.last_name
+        },
       'spotId': self.spot_id,
       'start': self.start,
       'end': self.end,

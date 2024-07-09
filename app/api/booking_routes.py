@@ -69,7 +69,7 @@ def create_review(id):
   if not booking:
     return 'No booking found', 404
 
-  if booking.user_id != current_user.get_id():
+  if int(booking.user_id) != int(current_user.get_id()):
     return 'You are not authorized', 403
 
   if booking.start > datetime.now():

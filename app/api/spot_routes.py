@@ -4,6 +4,8 @@ from .helper_functions import user_owns_spot, check_bookings
 from app.models import Review, Spot, Booking, SpotImage, db
 from app.forms import BookingForm, CreateSpotForm, SpotImageForm, EditSpotForm
 from app.api.aws_helper import upload_file_to_s3, get_unique_filename
+from datetime import datetime
+from sqlalchemy import or_
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -201,3 +203,24 @@ def add_booking(id):
     return booking.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@spot_routes.route('/<int:id>/bookings')
+@login_required
+def get_spot_bookings(id):
+  spot = Spot.query.get(id)
+
+  if not spot:
+    return 'Spot not found', 404
+
+  if not user_owns_spot(spot):
+    return 'You are not authorized', 403
+
+  bookings = Booking.query.filter(
+    Booking.spot_id==id,
+    or_(
+      Booking.start >= datetime.now(),
+      Booking.end >= datetime.now()
+    )
+  ).all()
+
+  return [booking.to_dict() for booking in bookings]
