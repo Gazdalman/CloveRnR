@@ -23,8 +23,6 @@ def seed_bookings():
 
   start = datetime.now()+timedelta(days=2)
 
-
-
   for id in range(1,36):
     spot = Spot.query.get(id)
     owner = spot.owner_id

@@ -32,6 +32,9 @@ def get_user_bookings():
 def edit_booking(id):
   booking = Booking.query.get(id)
 
+  if booking.start <= datetime.now():
+    return 'Cannot edit a past stay', 400
+
   form = BookingForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -63,6 +66,14 @@ def edit_booking(id):
 def create_review(id):
   booking = Booking.query.get(id)
 
+  past_review = Review.query.filter(
+    int(Review.user_id)==int(current_user.get_id()),
+    int(Review.booking_id)==int(id)
+  ).all()
+
+  if past_review[0]:
+    return 'Already left a review', 400
+
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -73,7 +84,7 @@ def create_review(id):
     return 'You are not authorized', 403
 
   if booking.start > datetime.now():
-    return 'Can\'t review a future stay', 403
+    return 'Can\'t review a future stay', 400
 
   if form.validate_on_submit():
     data = form.data

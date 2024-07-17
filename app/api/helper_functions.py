@@ -32,6 +32,7 @@ def check_bookings(start,end,id):
   return 'ok'
 
 def edit_bookings_check(start,end,id):
+
   booking = Booking.query.get(id)
 
   spot_bookings = Booking.query.filter(Booking.spot_id==booking.spot_id, Booking.id!=id).all()
