@@ -54,3 +54,13 @@ def edit_bookings_check(start,end,id):
     if start <= date1 and end >= date2:
       return 'Booking dates conflict with an existing booking'
   return 'ok'
+
+def booking_past(booking):
+  if booking.start <= datetime.now() and booking.end <= datetime.now():
+    return True
+  return False
+
+def active_booking(booking):
+  if booking.start <= datetime.now() and booking.end > datetime.now():
+    return True
+  return False

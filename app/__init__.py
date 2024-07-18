@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from .models import db, User
-from .api import user_routes, auth_routes, spot_routes, spot_images_routes, booking_routes
+from .api import user_routes, auth_routes, spot_routes, spot_images_routes, booking_routes, review_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +30,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(spot_routes, url_prefix='/api/spots')
 app.register_blueprint(spot_images_routes, url_prefix='/api/spot_images')
 app.register_blueprint(booking_routes, url_prefix='/api/bookings')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 
 db.init_app(app)
 Migrate(app, db)

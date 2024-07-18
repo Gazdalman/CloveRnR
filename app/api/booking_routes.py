@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Review, Booking, db
 from app.forms import ReviewForm, BookingForm
-from .helper_functions import edit_bookings_check
+from .helper_functions import edit_bookings_check, booking_past, active_booking
 from datetime import datetime
 
 booking_routes = Blueprint('bookings', __name__)
@@ -67,11 +67,11 @@ def create_review(id):
   booking = Booking.query.get(id)
 
   past_review = Review.query.filter(
-    int(Review.user_id)==int(current_user.get_id()),
-    int(Review.booking_id)==int(id)
-  ).all()
+    Review.user_id==current_user.get_id(),
+    Review.booking_id==id
+  ).first()
 
-  if past_review[0]:
+  if past_review:
     return 'Already left a review', 400
 
   form = ReviewForm()
@@ -92,6 +92,7 @@ def create_review(id):
     review = Review(
       user_id=current_user.get_id(),
       spot_id=booking.spot_id,
+      booking_id=booking.id,
       text=data['text'],
       stars=data['stars']
     )
@@ -101,3 +102,27 @@ def create_review(id):
     return review.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@booking_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_booking(id):
+  booking = Booking.query.get(id)
+
+  if not booking:
+    return 'Booking not found', 404
+
+  if int(booking.user_id) != int(current_user.get_id()):
+    return 'You are not authorized', 403
+
+  if booking_past(booking):
+    return 'This booking has passed', 400
+
+  if active_booking(booking):
+    booking.end = datetime.now()
+    db.session.commit()
+    return 'The rest of your booking has been cancelled'
+
+  db.session.delete(booking)
+  db.session.commit()
+
+  return 'Booking has been deleted'

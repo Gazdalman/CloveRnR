@@ -5,10 +5,14 @@ from app.forms import ReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
-@review_routes.route('/new', methods=['POST'])
+@review_routes.route('/user')
 @login_required
-def new_review():
+def get_user_reviews():
+  reviews = Review.query.filter(
+    Review.user_id==current_user.get_id()
+  ).all()
 
-  form = ReviewForm()
+  if not reviews:
+    return 'No reviews found', 404
 
-  form['csrf_token'].data = request.cookies['csrf_token']
+  return {review.id: review.to_dict() for review in reviews}
