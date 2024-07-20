@@ -115,6 +115,8 @@ def add_image(id):
     )
 
     db.session.add(image)
+
+    spot.updated_at = datetime.now()
     db.session.commit()
 
     return 'ok'
@@ -145,6 +147,7 @@ def edit_spot(id):
     spot.lng = data['lng']
     spot.description = data['description']
     spot.price = data['price']
+    spot.updated_at = datetime.now()
 
     db.session.commit()
 

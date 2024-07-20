@@ -55,6 +55,7 @@ def edit_booking(id):
     booking.start = data['start']
     booking.end = data['end']
     booking.notes = data['notes']
+    booking.updated_at = datetime.now()
 
     db.session.commit()
     return booking.to_dict()

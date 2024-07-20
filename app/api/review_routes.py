@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Review, db
 from app.forms import ReviewForm
+from datetime import datetime
 
 review_routes = Blueprint('reviews', __name__)
 
@@ -27,7 +28,7 @@ def get_user_reviews():
 
   return {review.id: review.to_dict() for review in reviews}
 
-@review_routes.route('/<int:id/edit', methods=['PUT'])
+@review_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_review(id):
   review = Review.query.get(id)
@@ -38,7 +39,7 @@ def edit_review(id):
   if not review:
     return 'Review not found', 404
 
-  if review.user_id != current_user.get_id():
+  if review.user_id != int(current_user.get_id()):
     return 'You are not authorized', 403
 
   if form.validate_on_submit():
@@ -46,6 +47,7 @@ def edit_review(id):
 
     review.stars = data['stars']
     review.text = data['text']
+    review.updated_at = datetime.now()
 
     db.session.commit()
     return 'Review Successfully Edited'
