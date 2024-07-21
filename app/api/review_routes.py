@@ -52,3 +52,19 @@ def edit_review(id):
     db.session.commit()
     return 'Review Successfully Edited'
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@review_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_review(id):
+  review = Review.query.get(id)
+
+  if not review:
+    return 'Review not found', 404
+
+  if review.user_id != int(current_user.get_id()):
+    return 'You are not authorized', 403
+
+  db.session.delete(review)
+  db.session.commit()
+
+  return 'Successfully Deleted'
