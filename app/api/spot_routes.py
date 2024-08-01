@@ -37,8 +37,6 @@ def get_spot(id):
 def get_spot_reviews(id):
   spot = Spot.query.get(id)
 
-  reviews = spot.reviews
-
   return [{review.id: review.to_dict()} for review in spot.reviews]
 
 @spot_routes.route('/user')
