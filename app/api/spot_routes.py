@@ -33,6 +33,14 @@ def get_spot(id):
   else:
     return {'errors': 'Spot not found'}, 404
 
+@spot_routes.route('/<int:id>/reviews')
+def get_spot_reviews(id):
+  spot = Spot.query.get(id)
+
+  reviews = spot.reviews
+
+  return [{review.id: review.to_dict()} for review in spot.reviews]
+
 @spot_routes.route('/user')
 @login_required
 def get_user_spots():
@@ -40,6 +48,7 @@ def get_user_spots():
 
   if spots:
     return {spot.id: spot.to_dict() for spot in spots}
+
 
 @spot_routes.route('/create', methods=['POST'])
 @login_required
