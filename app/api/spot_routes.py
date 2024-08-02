@@ -22,7 +22,11 @@ def validation_errors_to_error_messages(validation_errors):
 
 @spot_routes.route('/')
 def get_all_spots():
-  spots = Spot.query.all()
+
+  page = request.args.get('page', 1, type=int)
+  per_page = 12 * page
+
+  spots = Spot.query.all().paginate(per_page=per_page)
   return {spot.id: spot.to_dict() for spot in spots}
 
 @spot_routes.route('/<int:id>')
@@ -47,6 +51,32 @@ def get_user_spots():
   if spots:
     return {spot.id: spot.to_dict() for spot in spots}
 
+# @spot_routes.route('/search')
+# def query_spots():
+#   """
+#   Returns all spots
+#   """
+#   # Grab the pagination and keyword from the query
+#   # page = request.args.get('page', 1, type=int) # Format is (key, default, type)
+#   per_page = request.args.get('per_page', 12, type=int)
+#   keyword = request.args.get('keyword', None)
+#   state = request.args.get('state', None)
+
+#   if keyword:
+#     if state:
+#       spots = Spot.query.filter(
+#         Spot.state==state,
+#         Spot.description.ilike(f"%{keyword}%")
+#       ).paginate(per_page=per_page)
+#     else:
+#       spots = Spot.query.filter(
+#         Spot.description.ilike(f"%{keyword}%"),
+#       ).paginate(per_page=per_page)
+
+#   else:
+#     spots = Spot.query.paginate(per_page=per_page)
+
+#   return [spot.to_dict() for spot in spots], 200
 
 @spot_routes.route('/create', methods=['POST'])
 @login_required
