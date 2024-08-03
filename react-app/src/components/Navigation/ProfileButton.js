@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li>Hello<br/>{user.username.length <= 10 ? user.username : user.username.slice(0, 10) + "..."}</li>
-            {/* <li>{user.email}</li> */}
+            <li>{user.email}</li>
             {location.pathname != "/profile" && <li>
               <button className="user-btn" onClick={redirect}>Your Account</button>
             </li>}
